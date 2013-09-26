@@ -2,12 +2,15 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser">
 
+    <adapter factory=".config.AreciboControlPanelAdapter" />
+
     <browser:page
-        for="Products.CMFPlone.Portal.PloneSite"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         name="arecibo-configuration"
         class=".config.AreciboConfigurationForm"
         permission="cmf.ManagePortal"
-        />  
+        />
+
     <browser:resource
         name="arecibo-icon.png"
         image="arecibo-icon.png"
