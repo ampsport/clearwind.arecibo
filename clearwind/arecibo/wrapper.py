@@ -44,10 +44,11 @@ def get(context):
     # and finally from the Plone Control Panel
     cfg = config.copy()
     registry = getUtility(IRegistry)
-    arecibo_settings = registry.forInterface(IAreciboConfiguration)
-
-    if not arecibo_settings:
+    try:
+        arecibo_settings = registry.forInterface(IAreciboConfiguration)
+    except KeyError:
         return cfg
+
     if arecibo_settings.account_number:
         cfg["account"] = arecibo_settings.account_number
     if arecibo_settings.app_name:

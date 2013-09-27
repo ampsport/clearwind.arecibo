@@ -16,4 +16,13 @@
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
 
+
+    <genericsetup:upgradeStep
+      title="Upgrade clearwind.arecibo to 1.0"
+      description=""
+      source="*"
+      destination="2"
+      handler=".setuphandlers.upgrade_1_to_2"
+      profile="clearwind.arecibo:default" />
+
 </configure>
