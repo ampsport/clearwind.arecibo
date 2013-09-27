@@ -5,7 +5,7 @@
     i18n_domain="clearwind.arecibo">
 
     <five:registerPackage package="." initialize=".initialize" />
-    <include package=".browser" />    
+    <include package=".browser" />
 
     <!-- Register the installation GenericSetup extension profile -->
     <genericsetup:registerProfile
@@ -15,23 +15,5 @@
       description="Plone interface to Arecibo"
       provides="Products.GenericSetup.interfaces.EXTENSION"
       />
-      
-    <!-- exportimport -->
-    <genericsetup:importStep
-        name="arecibo"
-        title="Arecibo"
-        description="Import Arecibo Configuration"
-        handler=".exportimport.importAreciboSettings">
-        <depends name="componentregistry"/>
-    </genericsetup:importStep>
-
-    <genericsetup:exportStep
-        name="arecibo"
-        title="Arecibo"
-        description="Export Arecibo Configuration"
-        handler=".exportimport.exportAreciboSettings">
-    </genericsetup:exportStep>
-    
-     <adapter factory=".exportimport.AreciboXMLAdapter"/>
 
 </configure>
