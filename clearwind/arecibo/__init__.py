@@ -1,5 +1,5 @@
 from AccessControl import ModuleSecurityInfo
-
+import patch
 
 ModuleSecurityInfo('clearwind.arecibo.wrapper').declarePublic('arecibo')
 
