@@ -1,11 +1,13 @@
 import sys
 import os 
 from lib.arecibo import ThreadedHTTPPost
-from App.config import getConfiguration
 from AccessControl import getSecurityManager
 from ZODB.POSException import ConflictError
 from clearwind.arecibo.interfaces import IAreciboConfiguration
 from zope.component.hooks import getSite
+from plone.registry.interfaces import IRegistry
+from zope.component import getUtility
+
 
 from logging import getLogger
 log = getLogger('Plone')
@@ -39,16 +41,18 @@ def get(context):
     # the from site_configuration
     # and finally from the Plone Control Panel
     cfg = config.copy()
-    qu = context.getSiteManager().queryUtility(IAreciboConfiguration, name='Arecibo_config')
-    if not qu:
+    registry = getUtility(IRegistry)
+    arecibo_settings = registry.forInterface(IAreciboConfiguration)
+
+    if not arecibo_settings:
         return cfg
-    if qu.account_number:
-        cfg["account"] = qu.account_number
-    if qu.app_name:
-        cfg["app_name"] = qu.app_name
-    if qu.transport == "smtp":
+    if arecibo_settings.account_number:
+        cfg["account"] = arecibo_settings.account_number
+    if arecibo_settings.app_name:
+        cfg["app_name"] = arecibo_settings.app_name
+    if arecibo_settings.transport == "smtp":
         cfg["transport"] = "smtp"
-    cfg["ignore_localhost"] = qu.ignore_localhost
+    cfg["ignore_localhost"] = arecibo_settings.ignore_localhost
     
     return cfg
 

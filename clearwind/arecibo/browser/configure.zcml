@@ -2,12 +2,10 @@
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser">
 
-    <adapter factory=".config.AreciboControlPanelAdapter" />
-
     <browser:page
-        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
         name="arecibo-configuration"
-        class=".config.AreciboConfigurationForm"
+        for="Products.CMFPlone.interfaces.IPloneSiteRoot"
+        class=".config.AreciboConfigurationView"
         permission="cmf.ManagePortal"
         />
 
