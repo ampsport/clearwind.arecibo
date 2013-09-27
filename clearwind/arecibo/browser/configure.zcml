@@ -1,4 +1,4 @@
-<configure 
+<configure
     xmlns="http://namespaces.zope.org/zope"
     xmlns:browser="http://namespaces.zope.org/browser">
 
@@ -12,5 +12,5 @@
     <browser:resource
         name="arecibo-icon.png"
         image="arecibo-icon.png"
-        /> 
+        />
 </configure>
